@@ -33,6 +33,15 @@ export const getStudent = async (id: string): Promise<Student> => {
     return await response.json();
 };
 
+export const getCount = async (): Promise<String> => {
+    console.log('Fetching student count');
+    const response = await fetch(`${BASE_URL}/students/count`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch student count');
+    }
+    return await response.text();
+};
+
 export const addStudent = async (student: Student): Promise<Student> => {
     console.log('Adding student:', student);
     const response = await fetch(`${BASE_URL}/students`, {
